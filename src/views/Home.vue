@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <div v-for="character in characters" :key="character.id">
+      {{ character.name }}
+      <br />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { ref } from "@vue/reactivity";
+import { GET_CHARACTERS } from "../api/api";
+import { buildCharacterQuery } from "../api/queries";
 
-export default defineComponent({
-  name: "Home",
-  components: {
-    HelloWorld,
+export default {
+  setup() {
+    const characters = ref({});
+    const getCharacters = async () => {
+      characters.value = await GET_CHARACTERS(buildCharacterQuery());
+    };
+
+    getCharacters();
+
+    return {
+      characters,
+      getCharacters,
+    };
   },
-});
+};
 </script>
