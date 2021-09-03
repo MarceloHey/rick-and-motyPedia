@@ -1,6 +1,6 @@
-export const buildCharacterQuery = (nameFilter = ''): any => {
+export const buildCharactersQuery = (nameFilter = '', page = 1): any => {
   return `{
-    characters(filter: {name: "${nameFilter}"}){
+    characters(page: ${page}, filter: {name: "${nameFilter}"}){
       results{
         id, 
         name, 
@@ -9,16 +9,63 @@ export const buildCharacterQuery = (nameFilter = ''): any => {
         type, 
         gender, 
         origin {
-          id
+          id,
+          name
         }, 
         location {
-          id
+          id,
+          name
         }, 
         image, 
         episode {
           id
         }, 
         created
+      }
+    }
+  } `;
+};
+
+export const buildCharacterQuery = (id: string) => {
+  return `{
+    character(id: ${id}){
+        id, 
+        name, 
+        status, 
+        species, 
+        type, 
+        gender, 
+        origin {
+          id,
+          name
+        }, 
+        location {
+          id,
+          name
+        }, 
+        image, 
+        episode {
+          id,
+          name,
+          air_date,
+          episode
+        }, 
+        created
+      
+    }
+  } `;
+};
+
+export const buildEpisodeQuery = (id: string) => {
+  return `{
+    episode(id: ${id}){
+      id,
+      name,
+      air_date,
+      episode,
+      characters {
+        id,
+        name
       }
     }
   } `;

@@ -38,23 +38,19 @@ export default {
 @import "../../public/scss/keyframes";
 
 .character-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   border-radius: 0.5rem;
-  width: 400px;
+  width: 100%;
   padding: 20px 10px;
-  margin: 20px;
   background: #fea;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
   transition: 0.2s;
   animation: anime-left 0.5s;
 
-  &:hover {
-    transform: translateY(-5px);
-    background: white;
-  }
   .character-card--info {
-    text-align: center;
+    text-align: left;
+    margin-left: 20px;
     .character-card--name {
       line-height: 1;
       font-size: 1.5rem;
@@ -62,7 +58,7 @@ export default {
       &::after {
         content: "";
         display: block;
-        margin: 5px auto;
+        margin: 5px 0;
         height: 2px;
         width: 100px;
         background: #333;
