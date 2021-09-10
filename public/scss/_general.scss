@@ -1,0 +1,105 @@
+@import "../../public/scss/keyframes";
+
+input {
+  margin: 0 auto;
+  border: 1px solid #eee;
+  color: white;
+  text-align: center;
+  display: block;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  background: $primary;
+  &:hover,
+  &:focus {
+    outline: none;
+    border-color: $secondary;
+  }
+}
+
+label {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: anime-left 0.5s;
+
+  p {
+    padding: 10px 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    span {
+      color: $secondary;
+    }
+  }
+  .material-icons {
+    cursor: pointer;
+    padding: 5px;
+    &:hover {
+      color: $secondary;
+    }
+  }
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 2;
+  margin: 10px 0;
+}
+
+.not-found {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-top: 10%;
+  margin-bottom: 20%;
+}
+
+.table {
+  margin: 50px 0;
+  text-align: left;
+  transition: 0.2s;
+  animation: anime-left 1s;
+  tr {
+    cursor: pointer;
+    &:hover {
+      background: $ternary;
+    }
+  }
+
+  td,
+  th {
+    padding: 10px 70px;
+  }
+
+  th {
+    font-weight: bold;
+    border-bottom: 2px solid $secondary;
+    pointer-events: none;
+    margin-bottom: 15px;
+  }
+}
+
+$large-device: 1200px;
+$medium-device: 760px;
+$small-device: 380px;
+@mixin device($size) {
+  @if $size == large {
+    @media screen and (min-width: #{$large-device}) {
+      @content;
+    }
+  } @else if $size == medium {
+    @media screen and (min-width: #{$medium-device}) and (max-width: #{$large-device - 1}) {
+      @content;
+    }
+  } @else if $size == small {
+    @media screen and (min-width: #{$small-device}) and (max-width: #{$medium-device - 1}) {
+      @content;
+    }
+  }
+}

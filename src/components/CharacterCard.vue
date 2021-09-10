@@ -7,21 +7,6 @@
       <p class="character-card--name">
         <slot name="name"></slot>
       </p>
-      <p class="character-card--status">
-        <slot name="status"></slot>
-      </p>
-      <p class="character-card--species">
-        <slot name="species"></slot>
-      </p>
-      <p class="character-card--gender">
-        <slot name="gender"></slot>
-      </p>
-      <p class="character-card--origin">
-        <slot name="origin"></slot>
-      </p>
-      <p class="character-card--location">
-        <slot name="location"></slot>
-      </p>
     </div>
   </div>
 </template>
@@ -36,48 +21,40 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../public/scss/keyframes";
+@import "../../public/scss/variables";
 
 .character-card {
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
-  width: 400px;
+  width: 200px;
+  height: 300px;
   padding: 20px 10px;
   margin: 20px;
-  background: #fea;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
+  background: $primary;
+  box-shadow: rgba(0, 0, 0, 1) 0px 1px 4px;
   transition: 0.2s;
-  animation: anime-left 0.5s;
-
+  animation: anime-left 1s;
+  cursor: pointer;
   &:hover {
     transform: translateY(-5px);
-    background: white;
+    background: $ternary;
+    color: $secondary;
   }
   .character-card--info {
     text-align: center;
+    padding: 10px 0;
     .character-card--name {
       line-height: 1;
       font-size: 1.5rem;
-      margin: 10px auto;
-      &::after {
-        content: "";
-        display: block;
-        margin: 5px auto;
-        height: 2px;
-        width: 100px;
-        background: #333;
-      }
     }
     p {
       font-size: 1.2rem;
-      padding: 0.3rem 0;
     }
   }
 
   .character-card--image img {
     max-width: 100%;
-    border: 1px solid #333;
-    border-radius: 0.5rem;
   }
 }
 </style>

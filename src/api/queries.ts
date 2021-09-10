@@ -1,6 +1,9 @@
-export const buildCharactersQuery = (nameFilter = '', page = 1): any => {
+export const buildCharactersQuery = (nameFilter = '', page = 1): string => {
   return `{
     characters(page: ${page}, filter: {name: "${nameFilter}"}){
+      info{
+        pages
+      }
       results{
         id, 
         name, 
@@ -18,15 +21,17 @@ export const buildCharactersQuery = (nameFilter = '', page = 1): any => {
         }, 
         image, 
         episode {
-          id
+          id,
+          name,
+          air_date,
+          episode
         }, 
-        created
       }
     }
   } `;
 };
 
-export const buildCharacterQuery = (id: string) => {
+export const buildCharacterQuery = (id: string | string[]): string => {
   return `{
     character(id: ${id}){
         id, 
@@ -50,13 +55,11 @@ export const buildCharacterQuery = (id: string) => {
           air_date,
           episode
         }, 
-        created
-      
     }
   } `;
 };
 
-export const buildEpisodeQuery = (id: string) => {
+export const buildEpisodeQuery = (id: string | string[]): string => {
   return `{
     episode(id: ${id}){
       id,
@@ -65,7 +68,61 @@ export const buildEpisodeQuery = (id: string) => {
       episode,
       characters {
         id,
-        name
+        name,
+        image
+      }
+    }
+  } `;
+};
+
+export const buildEpisodesQuery = (episodeFilter = '', page = 1): string => {
+  return `{
+    episodes(page: ${page}, filter: {name: "${episodeFilter}"}) {
+      info {
+       pages
+     },
+     results {
+       id,
+       name,
+       air_date,
+       episode,
+     }
+    }
+  } `;
+};
+
+export const buildLocationsQuery = (locationFilter = '', page = 1): string => {
+  return `{
+    locations(page: ${page}, filter: {name: "${locationFilter}"}) {
+      info {
+       pages
+     },
+     results {
+       id,
+       name,
+       type,
+       dimension,
+       residents {
+         id,
+         name,
+         image
+       }
+     }
+    }
+  } `;
+};
+
+export const buildLocationQuery = (id: string | string[]): string => {
+  return `{
+    location(id: ${id}) {
+      id,
+      name,
+      type,
+      dimension,
+      residents {
+        id,
+        name,
+        image
       }
     }
   } `;

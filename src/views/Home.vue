@@ -1,104 +1,74 @@
 <template>
-  <div class="home">
-    <h1>Personagens</h1>
-    <div class="characters-filter--input">
-      <label for="name-filter">Filtrar por nome</label>
-      <input name="name-filter" id="name-filter" type="text" />
-    </div>
-    <div class="character-cards">
-      <div v-for="character in characters" :key="character.id">
-        <CharacterCard
-          :image="character.image"
-          @click="handleCharacterClick(character.id)"
-        >
-          <template v-slot:name>{{ character.name }}</template>
-          <template v-slot:status>Status: {{ character.status }}</template>
-          <template v-slot:species>Species: {{ character.species }}</template>
-          <template v-slot:gender>Gender: {{ character.gender }}</template>
-          <template v-slot:origin>Origin: {{ character.origin.name }}</template>
-          <template v-slot:location
-            >Location: {{ character.location.name }}</template
-          >
-        </CharacterCard>
-      </div>
-    </div>
+  <Hero class="home-hero">
+    <template v-slot:title
+      >Your favourite Rick and Morty Enciclopedia ;)</template
+    >
+  </Hero>
+  <div class="home-links">
+    <router-link to="/characters">
+      <button>Characters</button>
+    </router-link>
+    <router-link to="/episodes">
+      <button>Episodes</button>
+    </router-link>
+    <router-link to="/locations">
+      <button>Locations</button>
+    </router-link>
   </div>
 </template>
-
 <script lang="ts">
-import { ref } from "@vue/reactivity";
-import { GET_CHARACTERS } from "../api/api";
-import { buildCharactersQuery } from "../api/queries";
-import CharacterCard from "../components/CharacterCard.vue";
-import { useRouter } from "vue-router";
-
+import Hero from "../components/Hero.vue";
 export default {
   components: {
-    CharacterCard,
-  },
-
-  setup() {
-    const router = useRouter();
-    const characters = ref({});
-
-    const getCharacters = async (nameFilter: string) => {
-      characters.value = await GET_CHARACTERS(buildCharactersQuery(nameFilter));
-    };
-
-    const handleCharacterClick = (id: string) => {
-      router.push({ name: "Character", params: { characterId: id } });
-    };
-
-    getCharacters("");
-
-    return {
-      characters,
-      getCharacters,
-      handleCharacterClick,
-    };
+    Hero,
   },
 };
 </script>
 <style lang="scss" scoped>
-.home {
-  .character-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  h1 {
-    font-size: 3rem;
-    line-height: 2;
-  }
+@import "../../public/scss/variables";
+@import "../../public/scss/keyframes";
+@import "../../public/scss/general";
+
+.home-hero {
+  display: flex;
+  align-items: center;
+  background-color: $ternary;
+  background-image: url("../assets/home-background.png");
+  background-repeat: no-repeat;
+  height: 500px;
+  overflow: hidden;
 }
 
-.characters-filter--input {
-  margin-bottom: 20px;
-  input {
-    margin: 0 auto;
-    border: 1px solid #eee;
-    text-align: center;
-    display: block;
-    width: 500px;
-    font-size: 1rem;
-    padding: 0.8rem;
-    border-radius: 0.4rem;
-    background: #eee;
-    transition: 0.2s;
-    &:hover,
-    &:focus {
-      outline: none;
-      border-color: #fb1;
-      background: white;
-      box-shadow: 0 0 0 3px #fea;
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 120px 0;
+  button {
+    cursor: pointer;
+    height: 60px;
+    width: 300px;
+    background: transparent;
+    color: $secondary;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: none;
+    animation: anime-left 1s;
+    border: 1px solid $secondary;
+    border-radius: 0.5rem;
+    &:hover {
+      background: $secondary;
+      color: $primary;
+      transform: translateY(-10px);
+      transition: 0.5s;
     }
   }
-
-  label {
-    display: block;
-    font-size: 1.5rem;
-    line-height: 1;
-    padding-bottom: 0.5rem;
+  @include device(small) {
+    flex-direction: column;
+    align-items: center;
+    button {
+      margin: 20px 0;
+    }
   }
 }
 </style>
