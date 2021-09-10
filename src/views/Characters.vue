@@ -129,7 +129,7 @@ export default {
   .character-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
   }
   h1 {
     font-size: 3rem;

@@ -56,7 +56,7 @@ export default createStore({
   actions: {
     async loadCharacters({ commit }: any, { filter = '', page = 1 }) {
       commit('SET_LOADING', true);
-      const characters = await GET_CHARACTERS(
+      const characters: ICharacter[] = await GET_CHARACTERS(
         buildCharactersQuery(filter, page),
       );
       commit('SET_CHARACTERS', characters);
@@ -65,35 +65,43 @@ export default createStore({
 
     async loadCharacter({ commit }: any, characterId: string) {
       commit('SET_LOADING', true);
-      const character = await GET_CHARACTER(buildCharacterQuery(characterId));
+      const character: ICharacter = await GET_CHARACTER(
+        buildCharacterQuery(characterId),
+      );
       commit('SET_CHARACTER', character);
       commit('SET_LOADING', false);
     },
 
     async loadEpisodes({ commit }: any, { filter = '', page = 1 }) {
       commit('SET_LOADING', true);
-      const episodes = await GET_EPISODES(buildEpisodesQuery(filter, page));
+      const episodes: IEpisode[] = await GET_EPISODES(
+        buildEpisodesQuery(filter, page),
+      );
       commit('SET_EPISODES', episodes);
       commit('SET_LOADING', false);
     },
 
     async loadEpisode({ commit }: any, episodeId: string) {
       commit('SET_LOADING', true);
-      const episode = await GET_EPISODE(buildEpisodeQuery(episodeId));
+      const episode: IEpisode = await GET_EPISODE(buildEpisodeQuery(episodeId));
       commit('SET_EPISODE', episode);
       commit('SET_LOADING', false);
     },
 
     async loadLocations({ commit }: any, { filter = '', page = 1 }) {
       commit('SET_LOADING', true);
-      const locations = await GET_LOCATIONS(buildLocationsQuery(filter, page));
+      const locations: ILocation[] = await GET_LOCATIONS(
+        buildLocationsQuery(filter, page),
+      );
       commit('SET_LOCATIONS', locations);
       commit('SET_LOADING', false);
     },
 
     async loadLocation({ commit }: any, locationId: string) {
       commit('SET_LOADING', true);
-      const location = await GET_LOCATION(buildLocationQuery(locationId));
+      const location: ILocation = await GET_LOCATION(
+        buildLocationQuery(locationId),
+      );
       commit('SET_LOCATION', location);
       commit('SET_LOADING', false);
     },

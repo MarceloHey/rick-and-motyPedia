@@ -109,7 +109,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../public/scss/variables";
 @import "../../public/scss/keyframes";
 

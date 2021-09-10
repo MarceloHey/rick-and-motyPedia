@@ -24,18 +24,17 @@ export default {
 @import "../../public/scss/variables";
 
 .character-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border-radius: 0.5rem;
-  width: 200px;
-  height: 300px;
-  padding: 20px 10px;
-  margin: 20px;
+  width: 350px;
+  margin: 10px;
   background: $primary;
   box-shadow: rgba(0, 0, 0, 1) 0px 1px 4px;
   transition: 0.2s;
   animation: anime-left 1s;
   cursor: pointer;
+
   &:hover {
     transform: translateY(-5px);
     background: $ternary;
@@ -43,7 +42,8 @@ export default {
   }
   .character-card--info {
     text-align: center;
-    padding: 10px 0;
+    align-self: center;
+    padding: 0 10px;
     .character-card--name {
       line-height: 1;
       font-size: 1.5rem;
@@ -53,8 +53,9 @@ export default {
     }
   }
 
-  .character-card--image img {
+  img {
     max-width: 100%;
+    border-radius: 0.5rem 0 0 0.5rem;
   }
 }
 </style>

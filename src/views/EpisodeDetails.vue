@@ -4,6 +4,7 @@
     <div v-else class="episode-card">
       <div class="episode-info">
         <p>{{ episode.name }}</p>
+        <span class="material-icons">remove</span>
         <p>{{ episode.episode }}</p>
       </div>
       <p style="color: #888; margin-bottom: 30px; font-size: 1.5rem">
@@ -59,7 +60,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../public/scss/variables";
 
 .episode-card {
@@ -75,7 +76,7 @@ export default {
 .episode-info {
   display: flex;
   justify-content: center;
-  align-self: center;
+  align-items: flex-start;
   padding: 30px 0;
   p {
     margin: 0 10px;

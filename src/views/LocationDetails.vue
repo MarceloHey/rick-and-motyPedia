@@ -4,6 +4,7 @@
     <div class="location" v-if="!loading && location">
       <div class="location-info">
         <p>{{ location.name }}</p>
+        <span class="material-icons">remove</span>
         <p>{{ location.type }}</p>
       </div>
       <p style="color: #888; margin-bottom: 30px; font-size: 1.5rem">
@@ -80,6 +81,7 @@ export default {
   }
   .location-info {
     display: flex;
+    align-items: center;
     p {
       margin: 0 10px;
       font-size: 1.8rem;

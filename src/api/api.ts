@@ -1,8 +1,8 @@
-import { ICharacter, IEpisode, ICharacters, ILocation } from './interfaces';
+import { ICharacter, IEpisode, ILocation } from './interfaces';
 
 const API_URL = 'https://rickandmortyapi.com/graphql';
 
-export const GET_CHARACTERS = async (query: string): Promise<ICharacters> => {
+export const GET_CHARACTERS = async (query: string): Promise<ICharacter[]> => {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',

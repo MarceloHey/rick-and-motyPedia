@@ -11,13 +11,6 @@ export interface ICharacter {
   episode?: IEpisode[];
 }
 
-export interface ICharacters {
-  info: {
-    pages: number;
-  };
-  results: ICharacter[];
-}
-
 export interface ILocation {
   id: number;
   name: string;
