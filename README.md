@@ -1,4 +1,6 @@
-# oh-rick
+# Rick&Morty Wiki
+
+Little project to practice Vue, Vuex, sass/scss and graphQL concepts consuming the https://rickandmortyapi.com/ to fetch data
 
 ## Project setup
 ```
