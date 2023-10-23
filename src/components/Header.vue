@@ -19,7 +19,7 @@
   </header>
 </template>
 <script lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import router from "@/router";
 
 export default {
@@ -41,7 +41,6 @@ export default {
 @import "../../public/scss/general";
 
 .header {
-  min-height: 80px;
   padding: 0 50px;
   display: flex;
   flex-wrap: wrap;
@@ -51,6 +50,7 @@ export default {
   img {
     max-width: 180px;
   }
+
   a {
     text-decoration: none;
     cursor: pointer;
@@ -62,6 +62,8 @@ export default {
 
   @include device(small) {
     flex-direction: column;
+    height: 100%;
+    padding: 1rem;
   }
 }
 
@@ -73,36 +75,38 @@ export default {
     margin: 40px;
     cursor: pointer;
     color: white;
+    &:hover {
+      color: $secondary;
+    }
     a {
       text-decoration: none;
       color: white;
-      &:hover {
-        color: $secondary;
-      }
     }
   }
 
   @include device(small) {
-    flex-direction: column;
-    li {
-      margin: 10px;
-      border: 1px solid $secondary;
-      border-radius: 0.5rem;
-      padding: 10px;
-      width: 200px;
-      &:hover {
-        background: $secondary;
-      }
-      a {
-        &:hover {
-          color: $primary;
-        }
-      }
-    }
-    li.active {
-      color: white;
-      background: $secondary;
-    }
+    display: none;
+    // flex-direction: column;
+    // margin-top: 20px;
+    // li {
+    //   margin: 10px;
+    //   border: 1px solid $secondary;
+    //   border-radius: 0.5rem;
+    //   padding: 10px;
+    //   width: 200px;
+    //   &:hover {
+    //     background: $secondary;
+    //   }
+    //   a {
+    //     &:hover {
+    //       color: $primary;
+    //     }
+    //   }
+    // }
+    // li.active {
+    //   color: white;
+    //   background: $secondary;
+    // }
   }
 }
 </style>

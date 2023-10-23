@@ -1,19 +1,19 @@
 <template>
-  <Hero class="home-hero">
-    <template v-slot:title
-      >Your favourite Rick and Morty Enciclopedia ;)</template
-    >
-  </Hero>
-  <div class="home-links">
-    <router-link to="/characters">
-      <button>Characters</button>
-    </router-link>
-    <router-link to="/episodes">
-      <button>Episodes</button>
-    </router-link>
-    <router-link to="/locations">
-      <button>Locations</button>
-    </router-link>
+  <div class="home">
+    <Hero class="home-hero">
+      <template v-slot:title>Your favorite Rick and Morty WIKI ;)</template>
+    </Hero>
+    <div class="home-links">
+      <router-link to="/characters">
+        <button>Characters</button>
+      </router-link>
+      <router-link to="/episodes">
+        <button>Episodes</button>
+      </router-link>
+      <router-link to="/locations">
+        <button>Locations</button>
+      </router-link>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -29,13 +29,25 @@ export default {
 @import "../../public/scss/keyframes";
 @import "../../public/scss/general";
 
+.home {
+  height: 100%;
+  background-color: $ternary;
+  background-image: url("../assets/home-background.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 70%;
+  background-position: center;
+  object-fit: contain;
+  @include device(small) {
+    background-position: 35% 100%;
+  }
+}
+
 .home-hero {
   display: flex;
   align-items: center;
-  background-color: $ternary;
-  background-image: url("../assets/home-background.png");
-  background-repeat: no-repeat;
-  height: 500px;
+
+  height: 300px;
   overflow: hidden;
 }
 
@@ -46,19 +58,22 @@ export default {
   margin: 120px 0;
   button {
     cursor: pointer;
+    text-shadow: 1.5px 1px #000;
     height: 60px;
     width: 300px;
     background: transparent;
-    color: $secondary;
+    color: #fff;
     font-size: 1.5rem;
     font-weight: bold;
     box-shadow: none;
     animation: anime-left 1s;
-    border: 1px solid $secondary;
+    border: 2px solid #fff;
     border-radius: 0.5rem;
     &:hover {
+      text-shadow: none;
       background: $secondary;
       color: $primary;
+      border-color: $secondary;
       transform: translateY(-10px);
       transition: 0.5s;
     }

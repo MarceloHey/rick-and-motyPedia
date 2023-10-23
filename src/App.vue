@@ -1,7 +1,9 @@
 <template>
   <Header />
-  <router-view />
-  <Footer />
+  <div class="content">
+    <router-view />
+  </div>
+  <Footer class="footer" />
 </template>
 
 <script lang="ts">
@@ -27,8 +29,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $text;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100vh;
+  .content {
+    flex: 1 1 auto;
+  }
 }
+
 body {
   background: $primary;
+  margin: 0;
+  padding: 0;
 }
 </style>

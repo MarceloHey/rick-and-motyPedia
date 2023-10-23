@@ -100,7 +100,7 @@ export default {
       }
       timer = window.setTimeout(function () {
         search(target.value);
-      }, 1000);
+      }, 500);
     };
 
     const changePage = async (direction: string) => {

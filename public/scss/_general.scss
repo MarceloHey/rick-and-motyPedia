@@ -4,12 +4,12 @@ input {
   margin: 0 auto;
   border: 1px solid #eee;
   color: white;
-  text-align: center;
   display: block;
   font-size: 1rem;
   padding: 0.8rem;
   border-radius: 0.4rem;
   background: $primary;
+
   &:hover,
   &:focus {
     outline: none;
@@ -34,13 +34,16 @@ label {
     padding: 10px 10px;
     font-weight: bold;
     font-size: 1.3rem;
+
     span {
       color: $secondary;
     }
   }
+
   .material-icons {
     cursor: pointer;
     padding: 5px;
+
     &:hover {
       color: $secondary;
     }
@@ -65,8 +68,10 @@ label {
   text-align: left;
   transition: 0.2s;
   animation: anime-left 1s;
+
   tr {
     cursor: pointer;
+
     &:hover {
       background: $ternary;
     }
@@ -88,16 +93,21 @@ label {
 $large-device: 1200px;
 $medium-device: 760px;
 $small-device: 380px;
+
 @mixin device($size) {
-  @if $size == large {
+  @if $size ==large {
     @media screen and (min-width: #{$large-device}) {
       @content;
     }
-  } @else if $size == medium {
+  }
+
+  @else if $size ==medium {
     @media screen and (min-width: #{$medium-device}) and (max-width: #{$large-device - 1}) {
       @content;
     }
-  } @else if $size == small {
+  }
+
+  @else if $size ==small {
     @media screen and (min-width: #{$small-device}) and (max-width: #{$medium-device - 1}) {
       @content;
     }
