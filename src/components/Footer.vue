@@ -7,10 +7,7 @@
     </div>
     <div>@MarceloHey 2023 - wubba lubba dub dub</div>
     <div class="footer-social-media">
-      <a
-        target="_blank"
-        href="https://www.linkedin.com/in/marcelo-toniolo-hey-51b6b0133/"
-      >
+      <a target="_blank" href="https://www.linkedin.com/in/marcelohey/">
         <svg
           class="linkedin"
           fill="#fff"

@@ -72,7 +72,7 @@ export default {
     &:hover {
       text-shadow: none;
       background: $secondary;
-      color: $primary;
+      color: #fff;
       border-color: $secondary;
       transform: translateY(-10px);
       transition: 0.5s;
